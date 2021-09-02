@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Calculadora</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .fundo {
+            background-image: linear-gradient(45deg, #4e69879c, #d3d3d348, #8080807e)
+                /* (45deg, #000000, #2313b5) */
+            ;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100vh;
+            color: rgba(0, 0, 0, 0.529);
+            text-align: center;
+        }
+
+        .calculadora {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            background-color: #2e2e2e3c;
+            box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.35);
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .botao {
+            width: 50px;
+            height: 50px;
+
+            font-size: 25px;
+            cursor: pointer;
+            background-color: rgba(31, 31, 31, 0.104);
+            border: none;
+            color: rgba(0, 0, 0, 0.707);
+            margin: 3px;
+            
+        }
+
+        .botao:hover {
+            background-color: #3737375d;
+            color: #fff;
+            transition: .1s;
+        }
+
+        #resultado {
+            background-color: #fff;
+            width: 220px;
+            height: 33px;
+            color: #000000;
+            margin: 5px 0;
+            font-size: 25px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+
+            text-align: right;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="fundo">
+
+        <div class="calculadora">
+            <h1>Calculadora</h1>
+            <p id="resultado"></p>
+
+            <table>
+                <tr>
+                    <td><button class="botao" onclick="clean()">C</button></td>
+                    <td><button class="botao" onclick="back()"><</button>
+                    </td>
+                    <td><button class="botao" onclick="insert('/')">/</button></td>
+                    <td><button class="botao" onclick="insert('*')">x</button></td>
+                </tr>
+
+                <tr>
+                    <td><button class="botao" onclick="insert('7')">7</button></td>
+                    <td><button class="botao" onclick="insert('8')">8</button></td>
+                    <td><button class="botao" onclick="insert('9')">9</button></td>
+                    <td><button class="botao" onclick="insert('-')">-</button></td>
+                </tr>
+
+                <tr>
+                    <td><button class="botao" onclick="insert('4')">4</button></td>
+                    <td><button class="botao" onclick="insert('5')">5</button></td>
+                    <td><button class="botao" onclick="insert('6')">6</button></td>
+                    <td><button class="botao" onclick="insert('+')">+</button></td>
+                </tr>
+
+                <tr>
+                    <td><button class="botao" onclick="insert('1')">1</button></td>
+                    <td><button class="botao" onclick="insert('2')">2</button></td>
+                    <td><button class="botao" onclick="insert('3')">3</button></td>
+                    <td rowspan="2"><button class="botao" style="height: 106px;" onclick="calcular()">=</button></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"><button class="botao" style="width: 106px;" onclick="insert('0')">0</button></td>
+                    <td><button class="botao" onclick="insert('.')">.</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+
+        function insert(num) {
+            const numero = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = numero + num;
+        }
+
+        function clean() {
+            document.getElementById('resultado').innerHTML = "";
+        }
+
+        function back() {
+            const resultado = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length - 1);//método substring corta uma string, 
+            //desde um índice até o outro, ex: string nome = "1234567890"; System.out.println(nome.substring(0,7)); Nesse exemplo ele vai pegar
+            //os primeiros 7 caracteres, ou seja “1234567”. Nesse caso determinei que ele pegaria o item de índice 0 do elemento, e excluíria(-1) esse item.
+        }
+
+        function calcular() {
+            const resultado = document.getElementById('resultado').innerHTML;
+
+            if (resultado) {
+                document.getElementById('resultado').innerHTML = eval(resultado);
+            } else {
+                document.getElementById('resultado').innerHTML = 'type'
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
