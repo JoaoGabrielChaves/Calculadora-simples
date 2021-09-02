@@ -15,9 +15,7 @@
         }
 
         .fundo {
-            background-image: linear-gradient(45deg, #4e69879c, #d3d3d348, #8080807e)
-                /* (45deg, #000000, #2313b5) */
-            ;
+            background-image: linear-gradient(45deg, #4e69879c, #d3d3d348, #8080807e);
             font-family: Arial, Helvetica, sans-serif;
             height: 100vh;
             color: rgba(0, 0, 0, 0.529);
@@ -131,9 +129,7 @@
 
         function back() {
             const resultado = document.getElementById('resultado').innerHTML;
-            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length - 1);//método substring corta uma string, 
-            //desde um índice até o outro, ex: string nome = "1234567890"; System.out.println(nome.substring(0,7)); Nesse exemplo ele vai pegar
-            //os primeiros 7 caracteres, ou seja “1234567”. Nesse caso determinei que ele pegaria o item de índice 0 do elemento, e excluíria(-1) esse item.
+            document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length - 1);
         }
 
         function calcular() {
